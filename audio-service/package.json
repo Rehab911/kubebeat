@@ -1,7 +1,7 @@
 {
-    "name": "audio-service",
+    "name": "kubebeat-audio-service",
     "version": "1.0.0",
-    "description": "Sound bank for KubeBeat",
+    "description": "Audio streaming microservice for KubeBeat",
     "main": "server.js",
     "scripts": {
         "start": "node server.js"
