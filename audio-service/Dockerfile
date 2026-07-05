@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Step 4: Install only production dependencies to keep the image small
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Step 5: Copy the rest of the backend source code and your audio assets
 COPY . .
