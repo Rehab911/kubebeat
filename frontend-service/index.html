@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥁 KubeBeat - K8s Drum Machine</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #00ffff;
+        }
+
+        p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .pad-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .pad {
+            width: 120px;
+            height: 120px;
+            background: #333;
+            border: 4px solid #555;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.1s ease;
+        }
+
+        .pad:active {
+            transform: scale(0.95);
+            background: #00ffff;
+            color: black;
+            box-shadow: 0 0 15px #00ffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>KubeBeat</h1>
+    <p>Powered by Kubernetes & VirtualBox</p>
+
+    <div class="pad-container">
+        <div class="pad" onclick="playSound('kick.ogg')">KICK</div>
+        <div class="pad" onclick="playSound('snare.ogg')">SNARE</div>
+        <div class="pad" onclick="playSound('hihat.ogg')">HI-HAT</div>
+    </div>
+
+    <script>
+        // ⚠️ REPLACE THIS WITH YOUR LIVE MINIKUBE AUDIO-SERVICE URL
+        const AUDIO_SERVICE_URL = "http://192.168.59.101:31677";
+
+        function playSound(soundFile) {
+            const audio = new Audio(`${AUDIO_SERVICE_URL}/sounds/${soundFile}`);
+            audio.play().catch(err => console.error("Playback blocked or sound file missing:", err));
+        }
+    </script>
+</body>
+
+</html>
