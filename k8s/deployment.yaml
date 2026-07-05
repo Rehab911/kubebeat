@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: audio-service
-          image: ghcr.io/Rehab911/kubebeat/audio-service:v1
+          image: ghcr.io/rehab911/kubebeat/audio-service:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
